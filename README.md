@@ -1,1 +1,1 @@
-To run, clone the repo and open the HTML file in your browser of choice.
+To run, clone the repo and open index.html file in a browser.

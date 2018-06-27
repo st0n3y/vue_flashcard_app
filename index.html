@@ -18,19 +18,19 @@
         <input v-model="newFront" type="text" id="front">
       </label>
       <label for="back">Back
-        <input v-model="newBack" type="text" id="back">
+        <input v-on:keypress.enter="addNew" v-model="newBack" type="text" id="back">
       </label>
-      <button>Add a New Card</button>
+      <button v-on:click="addNew">Add a New Card</button>
       <span class="error">Oops! Flashcards need a front and a back.</span>
     </div>
 
     <ul class="flashcard-list">
-      <li v-for="card in cards" v-on:click="flipCard(card)">
+      <li v-for="(card, index) in cards" v-on:click="flipCard(card)">
         <p v-if="!card.flipped" class="card">{{ card.front }}
-            <span class="delete-card">X</span>
+            <span v-on:click="deleteCard(index)" class="delete-card">X</span>
         </p>
         <p v-else class="card">{{ card.back }}
-            <span class="delete-card">X</span>
+            <span v-on:click="deleteCard(index)" class="delete-card">X</span>
         </p>
       </li>
     </ul>
