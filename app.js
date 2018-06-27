@@ -27,18 +27,26 @@ const cards = [
     data: {
       cards: cards,
       newFront: '',
-      newBack: ''
+      newBack: '',
+      error: false
     },
     methods: {
       flipCard: function(card) {
         card.flipped = !card.flipped;
       },
       addNew: function() {
-        this.cards.push({
-          front: this.newFront,
-          back: this.newBack,
-          flipped: false
-        })
+        if(!this.newFront || !this.newBack) {
+          this.error = true;
+        } else {
+          this.cards.push({
+            front: this.newFront,
+            back: this.newBack,
+            flipped: false
+          });
+          this.newFront = '';
+          this.newBack = '';
+          this.error = false;
+        }
       },
       deleteCard: function(index) {
         cards.splice(index, 1);
