@@ -26,8 +26,12 @@ const cards = [
     el: '#flashcard-app',
     data: {
       cards: cards,
+      newFront: '',
+      newBack: ''
     },
     methods: {
-
+      flipCard: function(card) {
+        card.flipped = !card.flipped;
+      }
     }
   });
